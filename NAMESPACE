@@ -1,0 +1,39 @@
+import(data.table)
+importFrom("methods", "formalArgs", "getMethod", "is")
+importFrom("utils", "methods")
+export(
+  #abort,
+  #catn,
+  defineEvaluationModes,
+  defineFunctionReturnTypesParameterName,
+  defineTestCaseDefinitionsParameterName,
+  #destroySpaces,
+  EvaluationMode,
+  FunctionParameterName,
+  FunctionParameterTypeFactory,
+  #getObjectClassNames,
+  #getObjectFunctionArguments,
+  #getObjectFunctionNames,
+  #getRClassTypicalFunctionNames
+  #getRObjectClassKind,
+  #guardExecution,
+  #hasMainClass,
+  #matchFunctionArguments,
+  packageFunctionsInformation,
+  retrieveFactory,
+  retrieveFunctionReturnTypes,
+  retrieveTestCaseDefinitions,
+  runFunction,
+  runTransientFunction,
+  runTestCase,
+  #strBracket,
+  #strJoin,
+  TestCaseDefinition,
+  verifyClassName,
+  verifyFunctionName,
+  verifyFunctionReturnTypesDefinition,
+  #verifyName,
+  verifyObjectNames,
+  verifyTestCaseDefinitions
+)
+

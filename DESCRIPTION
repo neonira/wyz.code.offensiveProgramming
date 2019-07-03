@@ -1,0 +1,25 @@
+Package: wyz.code.offensiveProgramming
+Type: Package
+Title: Wyzardry Code Offensive Programming
+Version: 1.01.001
+Author: Fabien GELINEAU <neonira@gmail.com>
+Maintainer: Fabien GELINEAU <neonira@gmail.com>
+Description: Allows to change R coding from defensive programming to offensive
+    programming. Provides code instrumentation to ease this change. Should reduce
+    the code size as many controls and type checks have no more reason to exist.
+Encoding: UTF-8
+LazyData: true
+License: GPL-3
+Depends: R (>= 3.5)
+Imports:
+    methods, 
+    data.table (>= 1.11.8),
+    tidyr,
+    lubridate (>= 1.7.4)
+Suggests:
+    testthat,
+    knitr,
+    rmarkdown,
+    DT (>= 0.5)
+RoxygenNote: 6.1.1
+VignetteBuilder: knitr

@@ -1,0 +1,1 @@
+catn <- function(...) cat(..., '\n')
