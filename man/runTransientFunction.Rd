@@ -36,14 +36,11 @@ Refer to \code{\link{runFunction}}
 }
 \examples{
 ##---- typical case ----
-\dontrun{
-runTranscientFunction(function(x_s) x_s, list('neonira'),
-                      EvaluationMode(defineEvaluationModes()[3]), 'x_s')
-runTranscientFunction(function(x_s) x_s, list(pi'),
-                      EvaluationMode(defineEvaluationModes()[3]), 'x_s')
-runTranscientFunction(function(x_s) x_s, list(pi'),
-                      EvaluationMode(defineEvaluationModes()[3]), 'x_d')
-}
+em <- EvaluationMode(defineEvaluationModes()[3])
+h <- function(x_s) x_s
+runTransientFunction(h, list('neonira'), em, 'x_s')
+runTransientFunction(h, list(pi), em, 'x_s')
+runTransientFunction(h, list(pi), em, 'x_d')
 }
 \keyword{ programming }
 \keyword{ utilities }

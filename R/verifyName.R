@@ -5,7 +5,7 @@ verifyName <- function(name_s = 'aSimpleName', strictSyntax_b_1 = TRUE, lowerCas
   if (!is.character(name_s))
     abort('you must provide the name as a character, got,', class(name_s))
   if (any(is.na(name_s)))
-    abort('function name can not take the NA value')
+    abort('name can not take the NA value')
 
   fn <- destroySpaces(name_s)
   if (any(nchar(fn) == 0))

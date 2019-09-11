@@ -3,6 +3,7 @@ FunctionParameterTypeFactory <- function() {
   class(self) <- append('FunctionParameterTypeFactory', class(self))
 
   type_classes <- list(basic = 'basic',
+                       math = 'math',
                        data_structure = 'data structure',
                        date = 'date',
                        numeric = 'numeric',
@@ -16,41 +17,72 @@ FunctionParameterTypeFactory <- function() {
 
   isPureBoolean <- function(o_1_) is.logical(o_1_) && !is.na(o_1_)
 
-  isPureInteger <- function(..., mathematicalValue_b = FALSE) {
-    checkInteger <- function(value_1_) is.numeric(value_1_) && !is.double(value_1_)
-    checkIntegerMath <- function(value_1_) checkInteger(value_1_) && !is.na(value_1_)
-    f <- if (mathematicalValue_b) checkIntegerMath else checkInteger
-    Vectorize(f)(list(...))
-  }
+  isPureComplex <- function(o_1_) is.complex(o_1_) && !is.na(o_1_)
+
+  isPureInteger <- function(o_1_) is.numeric(o_1_) &&  !is.double(o_1_)
+
+  isPureMathInteger <- function(o_1_) isPureInteger(o_1_) && !is.na(o_1_)
+
+  isPureReal <- function(o_1_) is.double(o_1_) && !is.na(o_1_)
+
+  isUnsignedReal <- function(o_1_) isPureReal(o_1_) && o_1_ >= 0.0
+
+  isNegativeReal <- function(o_1_) isPureReal(o_1_) && o_1_ <= 0.0
+
+  isUnsignedInteger <- function(o_1_) isPureMathInteger(o_1_) && o_1_ >= 0L
+
+  isNegativeInteger <- function(o_1_) isPureMathInteger(o_1_) && o_1_ <= 0L
+
+  isString <- function(o_1_) is.character(o_1_) && !is.na(o_1_)
 
   allowedSuffixes <- list(
-    list('a' , 'array'      , list(is.array)                   , type_classes$data_structure),
-    list('b' , 'boolean'    , list(isPureBoolean)              , type_classes$basic),
-    list('c' , 'complex'    , list(is.complex)                 , type_classes$numeric),
-    list('ca', 'call'       , list(is.call)                    , type_classes$language),
-    list('d' , 'double'     , list(is.double)                  , type_classes$numeric),
-    list('da', 'date'       , list(lubridate::is.Date)         , type_classes$date),
-    list('dc', 'POSIXct'    , list(lubridate::is.POSIXct)      , type_classes$date),
-    list('dl', 'POSIXlt'    , list(lubridate::is.POSIXlt)      , type_classes$date),
-    list('e' , 'environment', list(is.environment)             , type_classes$basic),
-    list('ex', 'expression' , list(is.expression)              , type_classes$language),
-    list('er', 'error'      , list(isError)                    , type_classes$error),
-    list('fa', 'factor'     , list(is.factor)                  , type_classes$basic),
-    list('f' , 'function'   , list(is.function)                , type_classes$basic),
-    list('df', 'data.frame' , list(is.data.frame)              , type_classes$data_structure),
-    list('dt', 'data.table' , list(data.table::is.data.table)  , type_classes$data_structure),
-    list('i' , 'integer'    , list(isPureInteger)              , type_classes$numeric),
-    list('l' , 'list'       , list(is.list)                    , type_classes$data_structure),
-    list('lo', 'logical'    , list(is.logical)                 , type_classes$data_structure),
-    list('m' , 'matrix'     , list(is.matrix)                  , type_classes$data_structure),
-    list('n' , 'numeric'    , list(is.numeric)                 , type_classes$numeric),
-    list('na', 'na'         , list(is.na)                      , type_classes$basic),
-    list('nm', 'name'       , list(is.name)                    , type_classes$language),
-    list('o' , 'object'     , list(is.object)                  , type_classes$basic),
-    list('r' , 'raw'        , list(is.raw)                     , type_classes$basic),
-    list('s' , 'string'     , list(is.character)               , type_classes$basic),
-    list('t' , 'table'      , list(is.table)                   , type_classes$data_structure),
-    list('w' , 'warning'    , list(isWarning)                  , type_classes$error)
+    list('a'   , 'array'        , list(is.array)                   , type_classes$data_structure),
+    list('b'   , 'boolean'      , list(isPureBoolean)              , type_classes$math),
+
+    list('c'   , 'complex'      , list(is.complex)                 , type_classes$numeric),
+    list('cm'  , 'complex-math' , list(isPureComplex)              , type_classes$math),
+
+    list('d'   , 'double'       , list(is.double)                  , type_classes$numeric),
+    list('r'   , 'real-math'    , list(isPureReal)                 , type_classes$math),
+
+    list('ch'  , 'character'    , list(is.character)               , type_classes$basic),
+    list('s'   , 'string'       , list(isString)                   , type_classes$basic),
+
+    list('ca'  , 'call'         , list(is.call)                    , type_classes$language),
+
+    list('da'  , 'date'         , list(lubridate::is.Date)         , type_classes$date),
+    list('dc'  , 'POSIXct'      , list(lubridate::is.POSIXct)      , type_classes$date),
+    list('df'  , 'data.frame'   , list(is.data.frame)              , type_classes$data_structure),
+    list('dt'  , 'data.table'   , list(data.table::is.data.table)  , type_classes$data_structure),
+    list('dl'  , 'POSIXlt'      , list(lubridate::is.POSIXlt)      , type_classes$date),
+    list('dm'  , 'double-math'  , list(isPureReal)                 , type_classes$math),
+    list('e'   , 'environment'  , list(is.environment)             , type_classes$basic),
+    list('ex'  , 'expression'   , list(is.expression)              , type_classes$language),
+    list('er'  , 'error'        , list(isError)                    , type_classes$error),
+    list('f'   , 'function'     , list(is.function)                , type_classes$basic),
+    list('fa'  , 'factor'       , list(is.factor)                  , type_classes$basic),
+    list('i'   , 'integer'      , list(isPureInteger)              , type_classes$numeric),
+    list('im'  , 'integer-math' , list(isPureMathInteger)          , type_classes$math),
+    list('l'   , 'list'         , list(is.list)                    , type_classes$data_structure),
+    list('lo'  , 'logical'      , list(is.logical)                 , type_classes$basic),
+    list('m'   , 'matrix'       , list(is.matrix)                  , type_classes$data_structure),
+    list('n'   , 'numeric'      , list(is.numeric)                 , type_classes$numeric),
+    list('na'  , 'na'           , list(is.na)                      , type_classes$basic),
+    list('nm'  , 'name'         , list(is.name)                    , type_classes$language),
+    list('o'   , 'object'       , list(is.object)                  , type_classes$basic),
+
+    list('ra'  , 'raw'             , list(is.raw)                  , type_classes$basic),
+
+    list('ui'  , 'unsigned integer', list(isUnsignedInteger)      , type_classes$math),
+    list('pi'  , 'positive integer', list(isUnsignedInteger)      , type_classes$math),
+    list('ni'  , 'negative integer', list(isNegativeInteger)      , type_classes$math),
+
+    list('ur'  , 'unsigned real'   , list(isUnsignedReal)         , type_classes$math),
+    list('pr'  , 'positive real'   , list(isUnsignedReal)         , type_classes$math),
+    list('nr'  , 'negative real'   , list(isNegativeReal)         , type_classes$math),
+
+    list('t'  , 'table'            , list(is.table)                 , type_classes$data_structure),
+    list('w'   , 'warning'         , list(isWarning)               , type_classes$error)
   )
 
   suffix <- NULL # data.table NSE issue with Rcmd check
@@ -64,7 +96,7 @@ FunctionParameterTypeFactory <- function() {
     NA
   }
 
-  getRecordedTypes <- function() dt
+  getRecordedTypes <- function() copy(dt)
 
   checkSuffix <- function(suffix_s_1) suffix_s_1[1] %in% dt$suffix
 
@@ -84,7 +116,7 @@ FunctionParameterTypeFactory <- function() {
 
   getVerificationFunction <- function(value_s_1) {
     rn <- getRowNumber(value_s_1[1])
-    if (is.na(rn)) return(paste('No suffix or type matches', strBracket(value_s_1[1])))
+    if (is.na(rn)) return(paste('No verification function', strBracket(value_s_1[1])))
     dt[rn]$verify_function[[1]]
   }
 

@@ -7,7 +7,9 @@ runTransientFunction <- function(function_f_1, arguments_l,
   if (!is.list(arguments_l))
     abort('arguments_l must be a list, got', strBracket(typeof(arguments_l)))
 
-  buildResult <- function(status_b_1, value_, mode_s_1) list(status = status_b_1, value = value_, mode = mode_s_1)
+  buildResult <- function(status_b_1, value_, mode_s_1) {
+    list(status = status_b_1, value = value_, mode = mode_s_1)
+  }
 
   rv <- guardExecution(do.call(function_f_1, arguments_l))
 
@@ -19,7 +21,8 @@ runTransientFunction <- function(function_f_1, arguments_l,
   s$function_return_type_check <- rbindlist(list(b))
   if (evaluationMode_o_1$is(modes[2])) return(s)
 
-  mfa <- matchFunctionArguments(arguments_l, formalArgs(function_f_1), functionParameterTypeFactory_o_1)
+  mfa <- matchFunctionArguments(arguments_l, retrieveFunctionArgumentNames(function_f_1),
+                                functionParameterTypeFactory_o_1)
   r <- buildResult(all(mfa$validity) && b$validity, rv, modes[3])
   r$parameter_type_checks <- mfa
   r$function_return_type_check <- s$function_return_type_check

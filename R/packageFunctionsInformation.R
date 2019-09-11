@@ -37,6 +37,8 @@ packageFunctionsInformation <- function() {
          applicability = pj(1:4) , kind = 'exploitation', user = 'end-user'),
     list('function' = 'runTestCases',
          applicability = pj(1:4) , kind = 'exploitation', user = 'end-user'),
+    list('function' = 'isAuditable',
+         applicability = pj(1:4) , kind = 'exploitation', user = 'end-user'),
     list('function' = 'packageFunctionsInformation'                      ,
          applicability = pj(1:nk), kind = 'information', user = 'anyone' )
   )

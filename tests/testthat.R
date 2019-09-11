@@ -1,4 +1,5 @@
-library(testthat)
-library(data.table)
+library("testthat")
+library("data.table")
+library("R6")
 library("wyz.code.offensiveProgramming")
 test_check("wyz.code.offensiveProgramming")

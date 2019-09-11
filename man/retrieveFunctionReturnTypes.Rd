@@ -30,10 +30,13 @@ Refer to \code{\link{defineEvaluationModes}}
 }
 \examples{
 ##---- typical case ----
-\dontrun{
+library('data.table')
+source(system.file('code-samples/no-defs/Addition.R',
+                   package = 'wyz.code.offensiveProgramming'))
+source(system.file('code-samples/frt-defs/good/full/AdditionFI.R',
+                   package = 'wyz.code.offensiveProgramming'))
 retrieveFunctionReturnTypes(AdditionFI()) # works, renders a data.table
 retrieveFunctionReturnTypes(Addition()) # fails, renders a list
-}
 }
 \keyword{ programming }
 \keyword{ utilities }

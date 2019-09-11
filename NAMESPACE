@@ -1,33 +1,36 @@
-import(data.table)
-importFrom("methods", "formalArgs", "getMethod", "is")
+import("data.table")
+import("R6")
+import("stringr")
+importFrom("lubridate", "is.Date", "is.POSIXct", "is.POSIXlt")
+importFrom("methods", "formalArgs", "getMethod", "is", "new", ".hasSlot")
 importFrom("utils", "methods")
+importFrom("tidyr", "separate")
 export(
-  #abort,
-  #catn,
   defineEvaluationModes,
   defineFunctionReturnTypesParameterName,
   defineTestCaseDefinitionsParameterName,
-  #destroySpaces,
   EvaluationMode,
   FunctionParameterName,
   FunctionParameterTypeFactory,
-  #getObjectClassNames,
-  #getObjectFunctionArguments,
-  #getObjectFunctionNames,
-  #getRClassTypicalFunctionNames
-  #getRObjectClassKind,
-  #guardExecution,
-  #hasMainClass,
-  #matchFunctionArguments,
+  getEllipsisName,
+  getObjectClassNames,
+  getObjectFunctionArgumentNames,
+  getObjectFunctionNames,
+  getClassTypicalFunctionNames,
+  getObjectClassKind,
+  hasMainClass,
+  isAuditable,
+  # matchFunctionArguments,
   packageFunctionsInformation,
   retrieveFactory,
+  retrieveFunctionArguments,
+  retrieveFunctionArgumentNames,
   retrieveFunctionReturnTypes,
+  #retrieveSupportedObjectInformation,
   retrieveTestCaseDefinitions,
   runFunction,
   runTransientFunction,
   runTestCase,
-  #strBracket,
-  #strJoin,
   TestCaseDefinition,
   verifyClassName,
   verifyFunctionName,

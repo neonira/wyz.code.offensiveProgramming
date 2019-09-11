@@ -14,3 +14,7 @@ TestCaseDefinition <- function(params_l, expectedResult_, description_s_1) {
 
   self
 }
+
+print.TestCaseDefinition <- function(x, ...) {
+  print(x$asList())
+}

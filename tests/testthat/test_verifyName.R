@@ -20,4 +20,9 @@ test_that("verifyName", {
   sapply(tn_good, myt)
   sapply(tn_bad, myf)
   sapply(tn_error, mye)
+
+  expect_error(verifyName(logical(0)))
+  expect_error(verifyName(NA_integer_))
+  expect_error(verifyName(NA_character_))
+  expect_error(verifyName(' \n \t '))
 })

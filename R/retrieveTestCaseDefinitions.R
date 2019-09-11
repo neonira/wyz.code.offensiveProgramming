@@ -9,5 +9,5 @@ retrieveTestCaseDefinitions <- function(object_o_1,
                                  functionParameterTypeFactory_o_1)
 
   if (!v$validity) return(v)
-  guardExecution(get(defineTestCaseDefinitionsParameterName(), envir = object_o_1))
+  von$sof$instrumented_tc
 }

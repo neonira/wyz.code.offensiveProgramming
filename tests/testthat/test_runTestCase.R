@@ -1,7 +1,9 @@
 context("runTestCase")
 
 source('pathResolver.R')
-source(file.path(computeRootPath(), 'code-samples/full-instrumentation/AdditionTCFI_G1.R'))
+fp <- file.path(computeRootPath(), 'code-samples/both-defs/good/full/AdditionTCFI_G1.R')
+# cat('path', fp, '\n')
+source(fp)
 tc <- runTestCase(AdditionTCFI_G1(), c(3, 4), EvaluationMode(defineEvaluationModes()[3]))
 
 test_that("runTestCase", {

@@ -35,11 +35,13 @@ Refer to \code{\link{FunctionParameterTypeFactory}} and \code{\link{runFunction}
 }
 \examples{
 ##---- typical case ----
-\dontrun{
+library('data.table')
+source(system.file('code-samples/frt-defs/good/full/AdditionFI.R',
+                   package = 'wyz.code.offensiveProgramming'))
+fi <- AdditionFI()
 runFunction(fi, 'addDouble', list(34, 44.6), EvaluationMode(defineEvaluationModes()[1]))
 runFunction(fi, 'addDouble', list(34, 44.6), EvaluationMode(defineEvaluationModes()[2]))
 runFunction(fi, 'addDouble', list(34, 44.6), EvaluationMode(defineEvaluationModes()[3]))
-}
 }
 \keyword{ programming }
 \keyword{ utilities }

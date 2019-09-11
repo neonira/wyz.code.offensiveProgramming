@@ -2,7 +2,7 @@ context("runFunction")
 
 source('pathResolver.R')
 
-source(file.path(computeRootPath(), 'code-samples/fun-defs/good/partial/AdditionFI_Partial.R'))
+source(file.path(computeRootPath(), 'code-samples/frt-defs/good/partial/AdditionFI_Partial.R'))
 
 results <- data.table(
   unnamed_args = c(rep(TRUE, 15)),
@@ -39,9 +39,23 @@ results <- data.table(
 test_that("runFunction", {
 
   verify_status <- function(i) {
-    #wyz.string.ops::catn(i, results[i]$expected_result, results[i]$execution_result[[1]]$status)
     expect_true(results[!!i]$expected_result == results[!!i]$execution_result[[1]]$status)
   }
 
   sapply(seq_len(nrow(results)), verify_status)
 })
+
+
+test_that("runFunction - coverage", {
+
+  # third parameter must be a list
+  expect_error(runFunction(MyEnv(), 'f', 'x_d', EvaluationMode(defineEvaluationModes()[1])))
+
+  # function g does not exit in MyEnv
+  expect_error(runFunction(MyEnv(), 'g', list(pi), EvaluationMode(defineEvaluationModes()[1])))
+
+  # Not instrumented return type for h in Zorg
+  expect_error(runFunction(Zorg(), 'h', list(pi), EvaluationMode(defineEvaluationModes()[3])))
+})
+
+

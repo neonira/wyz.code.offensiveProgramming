@@ -29,10 +29,10 @@ Refer to \code{\link{FunctionParameterTypeFactory}}
 \examples{
 ##---- typical case ----
 ff <- FunctionParameterTypeFactory()
-ff$addSuffix('wo', "wo class", function(o_) is(o, "wo"))
-ff$addSuffix('yo', "yo class", function(o_) is(o, "yo"))
-ff$addSuffix('zo', "zo class", function(o_) is(o, "zo"))
-retrieveFactory(ff) # sets and retrieves the factory
+ff$addSuffix('wo', "wo class", function(o_) is(o_, "wo"))
+ff$addSuffix('yo', "yo class", function(o_) is(o_, "yo"))
+ff$addSuffix('zo', "zo class", function(o_) is(o_, "zo"))
+retrieveFactory(ff) # set and retrieves the factory
 }
 \keyword{ programming }
 \keyword{ utilities }

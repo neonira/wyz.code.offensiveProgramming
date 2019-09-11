@@ -5,7 +5,7 @@ Package functions information
 }
 \description{
 A reminder of available functions from this package, and, most common usage
-intent.
+intent. A poor man CLI cheat sheet.
 }
 \usage{
 packageFunctionsInformation()

@@ -37,11 +37,12 @@ Refer to \code{\link{defineTestCaseDefinitionsParameterName}}.
 }
 \examples{
 ##---- typical case ----
-\dontrun{
+library('data.table')
+source(system.file('code-samples/frt-defs/good/full/AdditionFI.R',
+                   package = 'wyz.code.offensiveProgramming'))
 fi <- AdditionFI()
 print(verifyFunctionReturnTypesDefinition(fi))
 print(verifyFunctionReturnTypesDefinition(fi, FALSE))
-}
 }
 \keyword{ programming }
 \keyword{ utilities }

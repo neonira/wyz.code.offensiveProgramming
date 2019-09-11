@@ -31,10 +31,11 @@ Refer to \code{\link{defineEvaluationModes}}
 }
 \examples{
 ##---- typical case ----
-\dontrun{
-runTestCase(AdditionTCFI_G1(), c(3, 5, 7),
-EvaluationMode(defineEvaluationModes()[3]))
-}
+library('data.table')
+source(system.file('code-samples/both-defs/good/full/AdditionTCFI_G1.R',
+                   package = 'wyz.code.offensiveProgramming'))
+em <- EvaluationMode('type_checking_enforcement')
+runTestCase(AdditionTCFI_G1(), c(3, 5, 7), em)
 }
 \keyword{ programming }
 \keyword{ utilities }

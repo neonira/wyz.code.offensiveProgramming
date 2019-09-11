@@ -45,10 +45,11 @@ Refer to \code{\link{verifyClassName}}and \code{\link{verifyFunctionName}}.
 }
 \examples{
 ##---- typical case ----
-\dontrun{
+library('data.table')
+source(system.file('code-samples/frt-defs/good/full/AdditionFI.R',
+                   package = 'wyz.code.offensiveProgramming'))
 fi <- AdditionFI()
 print(verifyObjectNames(fi))
-}
 }
 \keyword{ programming }
 \keyword{ utilities }

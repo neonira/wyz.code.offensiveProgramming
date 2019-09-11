@@ -36,10 +36,11 @@ Refer to \code{\link{defineTestCaseDefinitionsParameterName}}.
 }
 \examples{
 ##---- typical case ----
-\dontrun{
+library('data.table')
+source(system.file('code-samples/tcd-defs/good/full/AdditionTC.R',
+                   package = 'wyz.code.offensiveProgramming'))
 tc <- AdditionTC()
 print(verifyTestCaseDefinitions(tc))
-}
 }
 \keyword{ programming }
 \keyword{ utilities }
