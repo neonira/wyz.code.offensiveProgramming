@@ -44,6 +44,7 @@ FunctionParameterTypeFactory <- function() {
 
     list('d'   , 'double'       , list(is.double)                  , type_classes$numeric),
     list('r'   , 'real-math'    , list(isPureReal)                 , type_classes$math),
+    list('rm'  , 'real-math alias', list(isPureReal)               , type_classes$math),
 
     list('ch'  , 'character'    , list(is.character)               , type_classes$basic),
     list('s'   , 'string'       , list(isString)                   , type_classes$basic),
@@ -89,6 +90,7 @@ FunctionParameterTypeFactory <- function() {
   dt <- data.table::rbindlist(allowedSuffixes)
   data.table::setnames(dt, colnames(dt), c('suffix', 'type', 'verify_function', 'category'))
   stopifnot(all(sapply(dt$verify_function, function(e) is.function(e)) == TRUE))
+  dt <- dt[order(suffix)]
 
   getRowNumber <- function(value_s_1) {
     if (value_s_1 %in% dt$suffix) return(which(dt$suffix == value_s_1))
@@ -96,7 +98,7 @@ FunctionParameterTypeFactory <- function() {
     NA
   }
 
-  getRecordedTypes <- function() copy(dt)
+  getRecordedTypes <- function() copy(dt[order(suffix)])
 
   checkSuffix <- function(suffix_s_1) suffix_s_1[1] %in% dt$suffix
 

@@ -8,6 +8,6 @@ getClassTypicalFunctionNames <- function(object_o_1) {
          'S4' = c('show', 'initialize'),
          'RC' = c("callSuper", "copy", "export", "field", "getClass",
                   "getRefClass", "import", "initFields", "show",  "trace",
-                  "untrace", "usingMethods")
+                  "untrace", "usingMethods", 'initialize')
   )
 }

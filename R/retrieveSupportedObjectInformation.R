@@ -26,7 +26,5 @@ retrieveSupportedObjectInformation <- function(object_o_1) {
     tcd = t,
     instrumented_fn = if (f) object_o_1@function_return_types else NA,
     instrumented_tc = if (t) object_o_1@test_case_definitions else NA
-    # instrumented_fn = if (f) slot(object_o_1, dfrtpn) else NA,
-    # instrumented_tc = if (t) slot(object_o_1, dtcdpn) else NA
   )
 }

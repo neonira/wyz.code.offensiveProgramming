@@ -14,7 +14,7 @@ getObjectFunctionArgumentNames <- function(object_o_1, allNames_b_1 = TRUE) {
     x <- retrieveFunctionArgumentNames(fa)
     if (is.null(x)) return(vector('character', 0))
     x
-  }) #, simplify = FALSE)
+  })
   names(l) <- ofn
   l
 }

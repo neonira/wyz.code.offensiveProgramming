@@ -5,6 +5,8 @@ Addition_TCFI_Partial_R6 <- R6::R6Class("Addition_TCFI_Partial_R6", list(
 
   generateError = function() { stop('generated error')},
 
+  generateWarning = function() 1:3 + 1:7,
+
   function_return_types = data.table(
     function_name = c('addInteger', 'generateError'),
     return_value = c('x_n', 'x_er')

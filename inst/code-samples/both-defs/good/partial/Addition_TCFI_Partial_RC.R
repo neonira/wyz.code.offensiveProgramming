@@ -5,14 +5,14 @@ Addition_TCFI_Partial_RC <- setRefClass("Addition_TCFI_Partial_RC",
                                         methods = list(
                                           initialize = function() {
                                             function_return_types <<- data.table(
-                                              function_name = c('addInteger', 'generateError'),
-                                              return_value = c('x_n', 'x_er')
+                                              function_name = c('addInteger', 'generateError', 'generateWarning'),
+                                              return_value = c('x_n', 'x_n', 'x_er')
                                             )
 
                                             test_case_definitions <<- data.table(
-                                              function_name = c(rep('addInteger', 9), 'generateError'),
-                                              standard_evaluation = c(rep('correct', 4), 'erroneous', rep('correct', 4), 'failure'),
-                                              type_checking_enforcement = c(rep('correct', 4), rep('failure', 5), 'failure'),
+                                              function_name = c(rep('addInteger', 9), 'generateError', 'generateErrorBis'),
+                                              standard_evaluation = c(rep('correct', 4), 'erroneous', rep('correct', 4), 'failure', 'failure'),
+                                              type_checking_enforcement = c(rep('correct', 4), rep('failure', 5), 'failure', 'failure'),
                                               test_case = list(
                                                 #addInteger - correct
                                                 TestCaseDefinition(list(34L, as.integer(44.5)), 78L, 'sum 2 integers'),
@@ -30,7 +30,10 @@ Addition_TCFI_Partial_RC <- setRefClass("Addition_TCFI_Partial_RC",
                                                 TestCaseDefinition(list(c(34L, 35L), 44L), c(78L, 79L), 'sum a vector of 2 integers with 1 integer'),
 
                                                 # generateError
-                                                TestCaseDefinition(list(), NA, 'generate error')
+                                                TestCaseDefinition(list(), NA, 'generate error'),
+
+                                                # generateErrorBis
+                                                TestCaseDefinition(list(), NA, 'generate error bis')
                                               )
                                             )
 
@@ -39,7 +42,11 @@ Addition_TCFI_Partial_RC <- setRefClass("Addition_TCFI_Partial_RC",
 
                                           addInteger = function(x_i, y_i) { x_i + y_i },
 
-                                          generateError = function() { stop('generated error')}
+                                          generateWarning = function() 1:3 + 1:7,
+
+                                          generateError = function() { stop('generated error')},
+
+                                          generateErrorBis = function() { stop('generated error bis')}
                                         )
 )
 

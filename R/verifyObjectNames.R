@@ -23,15 +23,6 @@ verifyObjectNames <- function(object_o_1, functionParameterTypeFactory_o_1 = ret
     dt
   }
 
-  # getS4Method <- function(methodName_s_1) {
-  #   if (nrow(.S4methods(methodName_s_1, a)$info)) {
-  #     get(methodName_s_1, mode = 'function')
-  #   } else {
-  #     NULL
-  #   }
-  # }
-  #
-
   sof <- retrieveSupportedObjectInformation(object_o_1)
 
   cn <- getObjectClassNames(object_o_1)$classname

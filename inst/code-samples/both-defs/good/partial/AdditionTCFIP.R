@@ -21,12 +21,10 @@ AdditionTCFIP <- function() {
   )
 
   test_case_definitions <- data.table(
-    function_name = c('addDouble', 'addInteger', 'divideByZero', "divideByZero", 'generateWarning', 'generateError'),
-    standard_evaluation = c('correct', 'correct', 'correct', 'correct', 'correct', 'failure'),
-    type_checking_enforcement = c('correct', 'erroneous', 'correct', 'correct', 'correct', 'correct'),
+    function_name = c('addInteger', 'divideByZero', "divideByZero", 'generateWarning', 'generateError'),
+    standard_evaluation = c('correct', 'correct', 'correct', 'correct', 'failure'),
+    type_checking_enforcement = c('erroneous', 'correct', 'correct', 'correct', 'correct'),
     test_case = list(
-      #addDouble
-      TestCaseDefinition(list(as.double(34L), 44.5), 78.5, 'sum 2 doubles'),
 
       # addInteger - se => erroneous, tci => failure
       TestCaseDefinition(list(34L, 44.5), 78L, 'sum 1 integer and 1 double'),

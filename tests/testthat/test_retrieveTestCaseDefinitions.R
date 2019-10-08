@@ -8,6 +8,10 @@ tt <- vector('list', 8)
 tt[[1]] <- proc.time()
 files <- list.files(sample_folder, pattern = glob2rx('*.R'), recursive = TRUE, full.names = TRUE)
 files <- files[grep('sample-classes', files, fixed = TRUE, invert = TRUE)] # not to be considered
+files <- files[grep('no-instrumentation', files, fixed = TRUE, invert = TRUE)] # not to be considered
+files <- files[grep('full-instrumentation', files, fixed = TRUE, invert = TRUE)] # not to be considered
+files <- files[grep('tc-defs', files, fixed = TRUE, invert = TRUE)] # not to be considered
+files <- files[grep('fun-defs', files, fixed = TRUE, invert = TRUE)] # not to be considered
 .sf <- sapply(files, source, encoding = 'UTF-8', keep.source = TRUE, simplify = FALSE)
 names(tt) <- c('start', paste0('source n=', length(files)), 'reify', 'verifyObjectName', 'retrieveFunctionReturnTypes',
                'verifyType', 'checkResult', 'testthat')
@@ -65,3 +69,8 @@ tt[[8]] <- proc.time()
 if (isAuditable()) {
   sapply(seq_len(length(tt) - 1), function(k) cat(names(tt)[k], (tt[[k + 1]] - tt[[k]])[3], '\n'))
 }
+
+test_that("retrieveTestCaseDescriptions", {
+  expect_true(is.character(retrieveTestCaseDescriptions(Addition())))
+  expect_true(is.data.table(retrieveTestCaseDescriptions(AdditionTCPartial())))
+})
