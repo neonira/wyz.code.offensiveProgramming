@@ -1,3 +1,4 @@
+<image src='./vignettes/op-hexsticker-transparent.png' alt='offensive programming' width='30%'/>
 
 **wyz.code.offensiveProgramming** R source code
 
