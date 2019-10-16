@@ -14,6 +14,8 @@ body {
 text-align: justify}
 </style>
 
+<image src='op-hexsticker-transparent.png' alt='offensive programming' style='width:30%'/>
+
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
