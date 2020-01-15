@@ -1,8 +1,5 @@
 language: r
 
-before_install:
-    - cd wyz.code.offensiveProgramming
-
 env:
    global:
      - R_BUILD_ARGS=" " 
