@@ -2,8 +2,6 @@
 
 **wyz.code.offensiveProgramming** R source code
 
-[![Build Status](https://travis-ci.com/neonira/wyz.code.offensiveProgramming.svg?branch=master)](https://travis-ci.com/neonira/wyz.code.offensiveProgramming)
-
-[![coverage Status](https://codecov.io/gh/neonira/wyz.code.offensiveProgramming/coverage.svg?branch=master)](https://codecov.io/gh/neonira/wyz.code.offensiveProgramming)
+[![Build Status](https://travis-ci.com/neonira/wyz.code.offensiveProgramming.svg?branch=master)](https://travis-ci.com/neonira/wyz.code.offensiveProgramming) [![coverage Status](https://codecov.io/gh/neonira/wyz.code.offensiveProgramming/coverage.svg?branch=master)](https://codecov.io/gh/neonira/wyz.code.offensiveProgramming)
 
 Get access to [Offensive programming book](https://neonira.github.io/offensiveProgrammingBook/) to get introduced to the topic. 
