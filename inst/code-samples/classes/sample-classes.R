@@ -7,6 +7,18 @@ Accumulator_R6 <- R6::R6Class("Accumulator_R6", list(
   })
 )
 
+EmptyR6 <- R6::R6Class("EmptyR6", list())
+
+FieldR6 <- R6::R6Class("FieldR6", list(alpha = 4.4))
+
+MethodR6 <- R6::R6Class("MethodR6", list(alpha = function() Inf))
+
+BindingR6 <- R6::R6Class("BindingR6", private = list(x = 1000L),
+                         active = list(z = function(x_i) {
+  if (missing(x_i)) return(private$x)
+  private$x <- as.integer(x_i)
+}))
+
 Bu_S3 <- function(x_l = list(l = letters, d = 0:9)) {
   value <- x_l
   attr(value, 'class') <- 'Bu_S3'
@@ -21,6 +33,35 @@ alpha.Bu_S3 <- function(x, msg_s = '', ...) {
   paste("in alpha.Bu_S3", class(x), msg_s, ...)
 }
 
+EmptyS3 <- function() {
+  value <- list()
+  attr(value, 'class') <- 'EmptyS3'
+  invisible(value)
+}
+
+FieldS3 <- function(x_b = list(a = 1L)) {
+  value <- x_b
+  attr(value, 'class') <- 'FieldS3'
+  invisible(value)
+}
+
+MethodS3 <- function(x_l = list()) {
+  value <- x_l
+  attr(value, 'class') <- 'MethodS3'
+  invisible(value)
+}
+
+value <- function(x, ...) {
+  UseMethod('value')
+}
+value.MethodS3 <- function(x, ...) { x$value }
+
+Unknown <- function() {
+  value <- 1L
+  attr(value, 'class') <- 'Unknown'
+  invisible(value)
+}
+
 # alpha(b, "ici", 'là',  'et là-bas')
 # [1] "in alpha.Bu_S3 Bu_S3 ici là et là-bas"
 
@@ -28,16 +69,15 @@ print.Bu_S3 <- function(x, ...) {
   print.default(x, ...)
 }
 
-
 getRObjectFromClassKind <- function(classkind_s_1) {
-   switch(toupper(classkind_s_1[1]),
-          'R6' = Accumulator_R6$new(),
-          'RC' = Person_RC(name = 'neonira'),
-          'S4' = Person_S4(name = 'neonira'),
-          'ENV' = MeltingPot_Env(),
-          'S3' = Bu_S3(),
-          NULL
-   )
+  switch(toupper(classkind_s_1[1]),
+         'R6' = Accumulator_R6$new(),
+         'RC' = Person_RC(name = 'neonira'),
+         'S4' = Person_S4(name = 'neonira'),
+         'ENV' = MeltingPot_Env(),
+         'S3' = Bu_S3(),
+         NULL
+  )
 }
 
 MeltingPot_Env <- function() {
@@ -83,11 +123,30 @@ Person_RC <- setRefClass("Person_RC",
                          )
 )
 
+EmptyRC <- setRefClass("EmptyRC",
+                       fields = list(),
+                       methods = list()
+)
+
+FieldRC <- setRefClass("FieldRC",
+                       fields = list(x = 'integer'),
+                       methods = list()
+)
+
+MethodRC <- setRefClass("MethodRC",
+                        fields = list(),
+                        methods = list(
+                          getString = function() {
+                            paste(sample(letters, 7, TRUE), collapse = '\n')
+                          }
+                        )
+)
+
 Person_S4 <- setClass("Person_S4",
-                     slots = c(
-                       name = "character",
-                       age = "numeric"
-                     )
+                      slots = c(
+                        name = "character",
+                        age = "numeric"
+                      )
 )
 
 setMethod("show", "Person_S4", function(object) {
@@ -103,6 +162,20 @@ setMethod("name", "Person_S4", function(o_) o_@name)
 
 #showMethods(class='Person_S4', includeDefs = TRUE)
 
+FieldS4 <- setClass("FieldS4",
+                    slots = c(
+                      name = "character",
+                      age = "numeric"
+                    )
+)
+
+# no slot implies virtual and non reifiability
+VirtualS4 <- setClass("VirtualS4")
+
+MethodS4 <- setClass("MethodS4", slots = c(a = 'numeric'))
+setGeneric("info", function(x_) standardGeneric("info"))
+setMethod('info', signature(x_ = "MethodS4"), function(x_) 43L)
+
 MyEnv <- function() {
   self <- environment()
   class(self) <- append('MyEnv', class(self))
@@ -114,6 +187,20 @@ MyEnv <- function() {
 EmptyEnv <- function() {
   self <- environment()
   class(self) <- append('EmptyEnv', class(self))
+  self
+}
+
+FieldEnv <- function() {
+  self <- environment()
+  x <- 4L
+  class(self) <- append('FieldEnv', class(self))
+  self
+}
+
+MethodEnv <- function() {
+  self <- environment()
+  fun <- function() 444L
+  class(self) <- append('MethodEnv', class(self))
   self
 }
 
@@ -189,6 +276,14 @@ Wyx <- function(d_d, y_b_1 = FALSE) {
 
   h <- f <- function(x_d) x_d + d_d
 
+  self
+}
+
+PureR <- function() {
+  self <- environment()
+  class(self) <- append('PureR', class(self))
+
+  h <- f <- function(x) x
   self
 }
 

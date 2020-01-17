@@ -5,7 +5,6 @@ source(file.path(computeRootPath(), 'code-samples', 'classes', 'sample-classes.R
 
 test_that("getObjetFunctionArgumentNames", {
   expect_true(is.na(getObjectFunctionArgumentNames(new.env())))
-
   expect_length(getObjectFunctionArgumentNames(EmptyEnv()), 0)
   expect_length(getObjectFunctionArgumentNames(MyEnv()), 1)
   expect_length(getObjectFunctionArgumentNames(Bu_S3()), 2)

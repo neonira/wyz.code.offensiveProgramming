@@ -1,5 +1,6 @@
 getObjectClassKind <-  function(object_o_1) {
-  if (!is.object(object_o_1)) return(NA_character_)
+  if (!is.object(object_o_1))
+    return(NA_character_)
   if (isS4(object_o_1)) {
     if (is(object_o_1, 'refClass')) return('RC')
     return('S4')

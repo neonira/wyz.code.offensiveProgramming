@@ -1,7 +1,7 @@
 runTestCase <- function(object_o_1, testCaseIndexes_i, evaluationMode_o_1 = EvaluationMode()) {
 
   determineFailureOrigin <- function(values_, frt_l_1, pc_l_1) {
-    v <- c('code execution', 'function return type check', 'parameter check')
+    v <- c('code execution', 'value check', 'function return type check', 'parameter check')
     r <- v[c('error' %in% class(values_), isTRUE(frt_l_1), isTRUE(pc_l_1))]
     if (length(r) == 0) NA_character_ else strJoin(r)
   }
@@ -21,7 +21,6 @@ runTestCase <- function(object_o_1, testCaseIndexes_i, evaluationMode_o_1 = Eval
     all(unlist(rv))
   }
 
-
   tcd <- retrieveTestCaseDefinitions(object_o_1)
   ft <- tcd[testCaseIndexes_i]
   ems <- ifelse(evaluationMode_o_1$getEvaluationMode() == defineEvaluationModes()[1],
@@ -37,9 +36,10 @@ runTestCase <- function(object_o_1, testCaseIndexes_i, evaluationMode_o_1 = Eval
     fo <- determineFailureOrigin(rf$value, !rf$function_return_check,
                                  !rf$parameter_check)
     rf$execution_evaluation <- ifelse(is.na(fo),
-                                        ifelse(vc, 'correct', 'erroneous'),
-                                        'failure')
+                                      ifelse(vc, 'correct', 'erroneous'),
+                                      'failure')
     rf$failure_origin <- fo
+    if ((ems == 'type_checking_enforcement') && (!is.na(fo) || !vc)) rf$status <- FALSE
     rf
   }, simplify = FALSE)
   names(l) <- ft$function_name

@@ -36,6 +36,11 @@ verifyObjectNames <- function(object_o_1, functionParameterTypeFactory_o_1 = ret
     pc <- computeParameterNameCompliance()
     snc <- cct && all(fct) && all(pc$semantic_naming_check)
     slc <- ccf && all(fcf) && all(pc$semantic_naming_check)
+  } else {
+    fct <- FALSE
+    pc <- FALSE
+    snc <- FALSE
+    slc <- FALSE
   }
 
   missing_fn <- NA_character_

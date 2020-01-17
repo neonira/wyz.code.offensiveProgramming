@@ -15,7 +15,7 @@ r1 <- nrow(retrieveFactory()$getRecordedTypes()[suffix == 'xyz'])
 #cat('r1', r1, '\n')
 
 my_factory <- retrieveFactory()
-my_factory$addSuffix('xyz', 'xyz', function(e) is(e, 'xyz'))
+my_factory$addSuffix('xyz', 'xyz', function(o_1l_) is(o_1l_, 'xyz'))
 
 # no environment variable associated
 setEnv('')

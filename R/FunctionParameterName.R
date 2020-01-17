@@ -128,3 +128,7 @@ FunctionParameterName <- function(name_s_1) {
   self
 }
 
+print.FunctionParameterName <- function(x, ...) {
+  cat(x$toString(), '\n')
+}
+

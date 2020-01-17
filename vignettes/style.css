@@ -1,0 +1,77 @@
+body {
+  font-size: 14px;
+  text-align: justify;
+}
+
+table { width: 100%;}
+
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+cite.right { text-align: right; }
+cite.ba { font-weight: bold;  color: lime;}
+cite.bj { font-weight: bold;  color: purple;}
+cite.bo { font-weight: bold;  color: olive;}
+cite.bt { font-weight: bold;  color: lightSalmon;}
+cite.isa { font-weight: bold;  color: ForestGreen;}
+cite.isa-tb { font-weight: bold;  color: MediumAquamarine;}
+cite.it { font-weight: bold;  color: royalBlue;}
+cite.ea { font-weight: bold;  color: CornFlowerBlue;}
+cite.m { font-weight: normal;  color: orchid;}
+cite.oc { font-weight: normal;  color: CornFlowerBlue;}
+cite.oj { font-weight: normal;  color: navajoWhite;}
+cite.op { font-weight: normal;  color: teal;}
+cite.os { font-weight: bold;  color: orange;}
+cite.qs { font-weight: normal;  color: darkKhaki;}
+cite.rt { font-weight: bold;  color: purple;}
+cite.ff { font: 'Courier new'; fotn-weight:bold; color: navy;}
+cite.fd { font: 'Courier new'; color: lime;}
+cite.imperatif { font-weight: bold;  color: red;}
+
+/*cite.archi { font-weight: normal;  color: CornFlowerBlue;}
+cite.qos { font-weight: normal;  color: darkKhaki;}
+cite.job { font-weight: bold;  color: lightSalmon;}
+cite.app { font-weight: bold;  color: ForestGreen;}
+cite.jargon { font-weight: normal;  color: navajoWhite;}
+cite.biz { font-weight: normal;  color: slateBlue;}
+
+cite.bas { font-weight: normal;  color: lime;}
+cite.met { font-weight: normal;  color: orchid;}*/
+
+
+cite.xxx { font-weight: bold; color: red;}
+cite.unsure { font-style: italic; color: darkOrange }
+
+cite.unsure:before { content: '(unsure';}
+cite.unsure:after { content: ')';}
+
+cite.kw { font-weight: bold; color: gray;}
+
+
+cite.exp { font-size: 0.8em; font-style: italic; font-weight:bold;}
+
+cite.smaller { font-size: 0.8em; font-style: italic; color: darkOrange }
+
+cite.comment { font-size: 0.8em; font-style: italic; }
+cite.comment:before { content: '(';}
+cite.comment:after { content: ')';}
+
+
+div.title { font-size: 1.2em; font-weight: bolder; width: 100%; border-bottom: 1px solid;}
+div.uexc { background: gray; color: white; font-style: italic; padding: 10px; border-radius: 25px; }
+
+div.question { padding-left: 10px; padding-right: 10px; border-radius: 25px; width: 100%; background: gray;
+  color: orange;
+}
+span.question { font-size: 1.3em; font-weight: bolder; display: block; }

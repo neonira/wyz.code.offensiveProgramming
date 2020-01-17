@@ -12,28 +12,60 @@ FunctionParameterTypeFactory <- function() {
                        error = 'error management',
                        user_defined = 'user defined')
 
-  isWarning <- function(x_) 'warning' %in% class(x_)
-  isError <- function(x_) 'error' %in% class(x_)
+  isWarning <- function(o_1l_) 'warning' %in% class(o_1l_)
+  isError <- function(o_1l_) 'error' %in% class(o_1l_)
 
-  isPureBoolean <- function(o_1_) is.logical(o_1_) && !is.na(o_1_)
+  isPureBoolean <- function(o_1l_) {
+    if (!is.logical(o_1l_)) return(FALSE)
+    if (length(o_1l_) == 0) return(TRUE)
+    all(is.na(o_1l_) == FALSE)
+  }
 
-  isPureComplex <- function(o_1_) is.complex(o_1_) && !is.na(o_1_)
+  isPureComplex <- function(o_1l_) {
+    if (!is.complex(o_1l_)) return(FALSE)
+    if (length(o_1l_) == 0) return(TRUE)
+    all(is.na(o_1l_) == FALSE) && all(is.infinite(o_1l_) == FALSE)
+  }
 
-  isPureInteger <- function(o_1_) is.numeric(o_1_) &&  !is.double(o_1_)
+  isPureInteger <- function(o_1l_) {
+    if (!is.numeric(o_1l_)) return(FALSE)
+    if (length(o_1l_) == 0) return(typeof(o_1l_) == 'integer')
+    all(is.double(o_1l_) == FALSE)
+  }
 
-  isPureMathInteger <- function(o_1_) isPureInteger(o_1_) && !is.na(o_1_)
+  isPureMathInteger <- function(o_1l_) {
+    if (!isPureInteger(o_1l_)) return(FALSE)
+    if (length(o_1l_) == 0) return(TRUE)
+    !is.na(o_1l_[1]) && !is.infinite(o_1l_[1])
+  }
 
-  isPureReal <- function(o_1_) is.double(o_1_) && !is.na(o_1_)
+  isPureReal <- function(o_1l_) {
+    if (!is.double(o_1l_)) return(FALSE)
+    if (length(o_1l_) == 0) return(TRUE)
+    all(is.na(o_1l_[1]) == FALSE) && all(is.infinite(o_1l_) == FALSE)
+  }
 
-  isUnsignedReal <- function(o_1_) isPureReal(o_1_) && o_1_ >= 0.0
+  isPositiveReal <- function(o_1l_) isPureReal(o_1l_) && all(o_1l_ >= 0.0)
 
-  isNegativeReal <- function(o_1_) isPureReal(o_1_) && o_1_ <= 0.0
+  isNegativeReal <- function(o_1l_) isPureReal(o_1l_) && all(o_1l_ <= 0.0)
 
-  isUnsignedInteger <- function(o_1_) isPureMathInteger(o_1_) && o_1_ >= 0L
+  isStrictlyPositiveReal <- function(o_1l_) isPureReal(o_1l_) && all(o_1l_ > 0.0)
 
-  isNegativeInteger <- function(o_1_) isPureMathInteger(o_1_) && o_1_ <= 0L
+  isStrictlyNegativeReal <- function(o_1l_) isPureReal(o_1l_) && all(o_1l_ < 0.0)
 
-  isString <- function(o_1_) is.character(o_1_) && !is.na(o_1_)
+  isPositiveInteger <- function(o_1l_) isPureMathInteger(o_1l_) && all(o_1l_ >= 0L)
+
+  isStrictlyPositiveInteger <- function(o_1l_) isPureMathInteger(o_1l_) && all(o_1l_ > 0L)
+
+  isNegativeInteger <- function(o_1l_) isPureMathInteger(o_1l_) && all(o_1l_ <= 0L)
+
+  isStrictlyNegativeInteger <- function(o_1l_) isPureMathInteger(o_1l_) && all(o_1l_ < 0L)
+
+  isString <- function(o_1l_) {
+    if (!is.character(o_1l_)) return(FALSE)
+    if (length(o_1l_) == 0) return(TRUE)
+    all(is.na(o_1l_) == FALSE)
+  }
 
   allowedSuffixes <- list(
     list('a'   , 'array'        , list(is.array)                   , type_classes$data_structure),
@@ -74,16 +106,20 @@ FunctionParameterTypeFactory <- function() {
 
     list('ra'  , 'raw'             , list(is.raw)                  , type_classes$basic),
 
-    list('ui'  , 'unsigned integer', list(isUnsignedInteger)      , type_classes$math),
-    list('pi'  , 'positive integer', list(isUnsignedInteger)      , type_classes$math),
+    list('ui'  , 'unsigned integer', list(isPositiveInteger)      , type_classes$math),
+    list('pi'  , 'positive integer', list(isPositiveInteger)      , type_classes$math),
     list('ni'  , 'negative integer', list(isNegativeInteger)      , type_classes$math),
+    list('spi' , 'strictly positive integer', list(isStrictlyPositiveInteger), type_classes$math),
+    list('sni' , 'strictly negative integer', list(isStrictlyNegativeInteger), type_classes$math),
 
-    list('ur'  , 'unsigned real'   , list(isUnsignedReal)         , type_classes$math),
-    list('pr'  , 'positive real'   , list(isUnsignedReal)         , type_classes$math),
+    list('ur'  , 'unsigned real'   , list(isPositiveReal)         , type_classes$math),
+    list('pr'  , 'positive real'   , list(isPositiveReal)         , type_classes$math),
     list('nr'  , 'negative real'   , list(isNegativeReal)         , type_classes$math),
+    list('spr' , 'strictly positive real', list(isStrictlyPositiveReal), type_classes$math),
+    list('snr' , 'strictly negative real', list(isStrictlyNegativeReal), type_classes$math),
 
     list('t'  , 'table'            , list(is.table)                 , type_classes$data_structure),
-    list('w'   , 'warning'         , list(isWarning)               , type_classes$error)
+    list('w'  , 'warning'         , list(isWarning)               , type_classes$error)
   )
 
   suffix <- NULL # data.table NSE issue with Rcmd check
@@ -104,6 +140,8 @@ FunctionParameterTypeFactory <- function() {
 
   addSuffix <- function(suffix_s_1, type_s_1, typeVerifier_f_1) {
     if (!is.function(typeVerifier_f_1)) return(FALSE)
+    i <- identical(retrieveFunctionArguments(isString), retrieveFunctionArguments(typeVerifier_f_1))
+    if (!i) return(FALSE)
     s <- gsub('_*([A-Za-z].*)', '\\1', suffix_s_1, perl = TRUE)
     rv <- checkSuffix(s)
     if (!rv) dt <<- data.table::rbindlist(list(dt, list(s, type_s_1, list(typeVerifier_f_1), type_classes$user_defined)))
@@ -156,32 +194,34 @@ FunctionParameterTypeFactory <- function() {
 
     if (functionParameterName_o$isEllipsis()) return('additional arguments.')
     s <- functionParameterName_o$getTypeSuffix()
-    type <-  if (checkSuffix(s))  {
-      dt[suffix == s]$type
+
+    if (checkSuffix(s))  {
+      type <- dt[suffix == s]$type
+      kind <- if (dt[suffix == s]$category %in% c(type_classes$basic, type_classes$numeric, type_classes$math)) 'values' else 'objects'
     } else {
-      if (functionParameterName_o$isPolymorphic()) 'variable type' else 'unknown'
-    }
-    kind <- if (checkSuffix(s))  {
-      if (dt[suffix == s]$category %in% c(type_classes$basic, type_classes$numeric)) 'values' else 'objects'
-    } else {
-      'objects'
+      type <- if (functionParameterName_o$isPolymorphic()) 'variable type' else 'unknown'
+      kind <- 'objects'
     }
 
     lu <- functionParameterName_o$getLengthSuffix()
     ll <- functionParameterName_o$getLengthModifier()
-    constraint <- if (is.na(lu)) 'unconstrained' else 'constrained'
-    len <- ''
-    if (!is.na(lu)) {
-      tx <- if (!is.na(ll))  {
-        switch(ll, 'n' = paste('1 or', lu), 'l' = paste(lu, 'or less'), 'm' = paste(lu, 'or more'))
+    constraint <- if (is.na(lu)) 'unconstrained' else {
+      if (!is.na(ll))  {
+        paste0('length-',
+               switch(ll, 'n' = paste('1 or', lu), 'l' = paste(lu, 'or less'), 'm' = paste(lu, 'or more'))
+        )
       } else {
-        lu
+        if (lu == 1L) 'single' else paste0('length-', lu)
       }
-      len <- paste0('Vector length must be ', tx ,'.')
     }
 
-    v <- paste0(getAdj(constraint, TRUE), ' ', constraint, ' vector of ', type, ' ', kind, '.')
-    if (len == '') v else paste(v, len)
+    single <- !is.na(lu) && is.na(ll) && lu == 1L
+    paste0(getAdj(constraint, TRUE), ' ', constraint, ' ',
+           if (type == 'list') type else
+             paste0(ifelse(single, '', 'vector of '), type, ' ',
+                    ifelse(single, substr(kind, 1L, nchar(kind) - 1L), kind)
+             )
+    )
   }
 
   self

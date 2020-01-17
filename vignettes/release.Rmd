@@ -1,0 +1,63 @@
+---
+title: "wyz.code.offensiveProgramming releases"
+author: "Fabien GELINEAU"
+date: "last update on 2020-01"
+output: 
+  rmarkdown::html_vignette:
+    css: style.css
+    number_sections: true
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{wyz.code.offensiveProgramming releases}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+<img src='images/op-hex.png' alt='offensive programming' style='width:30%'/>
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "")
+source('vignette-common.R')
+```
+
+Latest release replaces fully olders ones, that are now considered obsoletes. Keep the pace, and  upgrade your packages to use the latest version!
+
+# Release 1.1.15
+
+Main improvements are 
+
+1. Added methods `r citefun('identifyOPInstrumentationLevel')`, `r citefun('retrievePackageFunctionNames')` 
+1. Upgraded `r citefun('packageFunctionsInformation')`
+1. Added many new classes in `r citefun('sample-classes.R')` to ease demo and increase reuse
+1. Updated vignettes
+1. enforce package test coverage higher than 99%. 
+
+# Release 1.1.14
+
+Main improvements are 
+
+1. Added print methods for `r citefun('FunctionParameterName')`, `r citefun('EvaluationMode')` and `r citefun('TestCaseDefinition')`
+2. solved issue on `r citefun('FunctionParameterTypeFactory')` when dealing with empty vectors as parameters
+3. added new suffixes `r citechar('spi')`, `r citechar('sni')`, `r citechar('spr')`, `r citechar('snr')`
+4. removed folders `r citefile('full-instrumetation')`, `r citefile('no-instrumentation')`, `r citefile('tc-defs')`, `r citefile('frt-defs')` from `r citefile('inst/code-samples')`
+
+# Release 1.1.10
+
+Main improvements are 
+
+1. Added many tests to work with `r citechar('RC')`, `r citechar('S3')`, `r citechar('S4')`, `r citechar('R6')` classes
+2. maintained higher code coverage higher than `r citeexr('99%')`
+
+# Release 1.1.9
+
+Main improvements are 
+
+1. corrected many typographic errors in i/o with end-user
+2. completed unit tests
+3. enforced higher code coverage from `r citeexr('75%')` up to `r citeexr('99.28%')`
+4. changed many functions visibility from hidden `r comment('internal to package')` to visible `r comment('end-user available')`.
+5. completed documentation
+6. cleaned up package dependencies. 
+
+
+

@@ -88,6 +88,8 @@ test_that("FunctionParameterName - coverage", {
   expect_equal(FunctionParameterName('myIdentifier_s_3n')$getLengthSpecification(), '3n')
 
   sapply(seq_len(length(fpns)), mtf)
+
+  expect_output(print(FunctionParameterName('x_i')))
 })
 
 
