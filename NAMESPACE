@@ -1,0 +1,52 @@
+import("data.table")
+import("R6")
+import("stringr")
+importFrom("lubridate", "is.Date", "is.POSIXct", "is.POSIXlt")
+importFrom("methods", "formalArgs", "getMethod", "is", "new", ".hasSlot")
+importFrom("utils", "methods", "installed.packages")
+importFrom("tidyr", "separate")
+export(
+  EvaluationMode,
+  FunctionParameterName,
+  FunctionParameterTypeFactory,
+  TestCaseDefinition,
+
+  defineEvaluationModes,
+  defineFunctionReturnTypesParameterName,
+  defineTestCaseDefinitionsParameterName,
+  exploreObjectNamesVerification,
+  findFilesInPackage,
+  getEllipsisName,
+  getObjectClassKind,
+  getObjectClassNames,
+  getObjectFunctionArgumentNames,
+  getObjectFunctionNames,
+  identifyOPInstrumentationLevel,
+  isAuditable,
+  packageFunctionsInformation,
+  retrieveFactory,
+  retrieveFunctionArguments,
+  retrieveFunctionArgumentNames,
+  retrieveFunctionReturnTypes,
+  retrievePackageFunctionNames,
+  retrieveTestCaseDefinitions,
+  retrieveTestCaseDescriptions,
+  runFunction,
+  runTestCase,
+  runTransientFunction,
+  verifyClassName,
+  verifyFunctionName,
+  verifyFunctionReturnTypesDefinition,
+  verifyObjectNames,
+  verifyTestCaseDefinitions
+
+  #matchFunctionArguments,
+  #retrieveSupportedObjectInformation,
+  #verifyName,
+)
+
+S3method(print, EvaluationMode)
+S3method(print, FunctionParameterName)
+S3method(print, TestCaseDefinition)
+
+
