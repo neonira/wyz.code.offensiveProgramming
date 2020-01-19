@@ -68,7 +68,9 @@ packageFunctionsInformation <- function() {
     bef('retrieveTestCaseDescriptions', stratum$LAYER_3, phasing$RUN, intent$PARTS_BUILDING),
     bef('runTestCase', stratum$LAYER_3, phasing$RUN, intent$PARTS_BUILDING),
     bef('runTransientFunction', stratum$LAYER_3, phasing$RUN, intent$PARTS_BUILDING),
-    bif('verifyName', stratum$LAYER_1, phasing$RUN, intent$PARTS_BUILDING)
+    bif('verifyName', stratum$LAYER_1, phasing$RUN, intent$PARTS_BUILDING),
+    bef('verifyFunctionArguments', stratum$LAYER_3, phasing$BUILD, intent$QUALITY_CONTROL),
+    bef('matchFunctionSignature', stratum$LAYER_3, phasing$RUN, intent$PARTS_BUILDING)
   )
   )
 

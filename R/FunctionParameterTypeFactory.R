@@ -178,7 +178,8 @@ FunctionParameterTypeFactory <- function() {
       rs <- functionParameterName_o$getTypeSuffix()
       if (!rs %in% dt$suffix) return(brv(FALSE, paste0('unknown suffix, [', rs, ']')))
       fn <- dt[suffix == rs]$verify_function[[1]]
-      b <- if (is.list(value_) && !is.object(value_)) all(sapply(value_, fn) == TRUE) else fn(value_)
+      # b <- if (is.list(value_) && !is.object(value_)) all(sapply(value_, fn) == TRUE) else fn(value_)
+      b <- fn(value_)
       return(brv(b, paste(ifelse(b, 'good', 'wrong'), 'type in values')))
     }
 

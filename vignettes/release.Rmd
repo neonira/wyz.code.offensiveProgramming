@@ -22,6 +22,12 @@ source('vignette-common.R')
 
 Latest release replaces fully olders ones, that are now considered obsoletes. Keep the pace, and  upgrade your packages to use the latest version!
 
+# Release 1.1.16
+
+Main improvements are 
+
+1. Added methods `r citefun('verifyFunctionArguments')` to simplify input parameter type checks implementation
+
 # Release 1.1.15
 
 Main improvements are 

@@ -1,7 +1,7 @@
 Package: wyz.code.offensiveProgramming
 Type: Package
 Title: Wizardry Code Offensive Programming
-Version: 1.1.15
+Version: 1.1.16
 Author: Fabien Gelineau <neonira@gmail.com>
 Maintainer: Fabien Gelineau <neonira@gmail.com>
 Description: Allows to change R coding from defensive programming (i.e. many input
@@ -14,10 +14,18 @@ Encoding: UTF-8
 LazyData: true
 License: GPL-3
 Depends: R (>= 3.5)
-Imports: methods, data.table (>= 1.11.8), tidyr, lubridate (>= 1.7.4),
-        stringr (>= 1.4.0), R6 (>= 2.4.0), crayon
-Suggests: testthat, knitr, rmarkdown
+Imports:
+    methods, 
+    data.table (>= 1.11.8),
+    tidyr,
+    lubridate (>= 1.7.4),
+    stringr (>= 1.4.0),
+    R6 (>= 2.4.0),
+    crayon
+Suggests:
+    testthat,
+    knitr,
+    rmarkdown
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
-NeedsCompilation: no
-Packaged: 2020-01-15 14:49:48 UTC; fabien
+
