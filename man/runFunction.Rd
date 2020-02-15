@@ -6,15 +6,13 @@ Run a function}
 Run a function from an object, according to the mentioned evaluation mode, and to the
 chosen type factory}
 \usage{
-runFunction(object_o_1, functionName_s_1, arguments_l,
-evaluationMode_o_1, functionParameterTypeFactory_o_1 = retrieveFactory())
+runFunction(object_o_1, functionName_s_1, arguments_l, evaluationMode_o_1)
 }
 \arguments{
   \item{object_o_1}{the object to consider}
   \item{functionName_s_1}{ a single string that is the name of the function to run}
   \item{arguments_l}{ a list of arguments to pass to the function}
   \item{evaluationMode_o_1}{ an evaluation mode object. See \code{\link{EvaluationMode}}}
-  \item{functionParameterTypeFactory_o_1}{ A type factory. See \code{\link{retrieveFactory}}}
 }
 \value{
 A \code{list} with names

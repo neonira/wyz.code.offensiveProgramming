@@ -7,15 +7,16 @@ Run transient function
 Run a function in a transient (non persistent) context.
 }
 \usage{
-runTransientFunction(function_f_1, arguments_l, evaluationMode_o_1,
-function_return_type_s_1, functionParameterTypeFactory_o_1 = retrieveFactory())
+runTransientFunction(function_f_1,
+                     arguments_l,
+                     evaluationMode_o_1,
+                     function_return_type_s_1)
 }
 \arguments{
   \item{function_f_1}{ a single \R function}
   \item{arguments_l}{ a list of arguments to pass to the function}
   \item{evaluationMode_o_1}{ an evaluation mode object. See \code{\link{EvaluationMode}}}
   \item{function_return_type_s_1}{ a semantic parameter name, given as a string, to express expected function return type}
-  \item{functionParameterTypeFactory_o_1}{ A type factory. See \code{\link{retrieveFactory}}}
 }
 \value{
 A \code{list} with names

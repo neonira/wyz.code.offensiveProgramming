@@ -1,6 +1,5 @@
 identifyOPInstrumentationLevel <- function(object_o_1 = NULL,
-                                           methodName_s_1 = NA_character_,
-                                           typeFactory_o_1 = retrieveFactory()) {
+                                           methodName_s_1 = NA_character_) {
 
   if (is.null(object_o_1) || !is.object(object_o_1)) {
     b1 <- if (is.na(methodName_s_1)) FALSE else {
@@ -17,7 +16,7 @@ identifyOPInstrumentationLevel <- function(object_o_1 = NULL,
          function_return_type = FALSE,
          test_case_definition = FALSE)
   } else {
-    v <- verifyObjectNames(object_o_1, typeFactory_o_1)
+    v <- verifyObjectNames(object_o_1)
 
     b1 <- if (is.logical(v$parameter_name_compliance)) {
       v$parameter_name_compliance

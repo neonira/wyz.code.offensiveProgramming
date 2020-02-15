@@ -1,4 +1,4 @@
-verifyObjectNames <- function(object_o_1, functionParameterTypeFactory_o_1 = retrieveFactory()) {
+verifyObjectNames <- function(object_o_1) {
 
   computeParameterNameCompliance <- function() {
 
@@ -9,7 +9,7 @@ verifyObjectNames <- function(object_o_1, functionParameterTypeFactory_o_1 = ret
           fpn <- FunctionParameterName(e)
           list(parameter_name = e,
                name_compliance_check = fpn$isValid(),
-               semantic_naming_check = fpn$isSemanticName(functionParameterTypeFactory_o_1),
+               semantic_naming_check = fpn$isSemanticName(),
                function_name = names(pn)[k])
         }, simplify = FALSE)
       } else {

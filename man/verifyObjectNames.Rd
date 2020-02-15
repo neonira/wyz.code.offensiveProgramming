@@ -11,11 +11,10 @@ return types and test case definitions. Provides information about completeness 
 and about missing functions and test cases.
 }
 \usage{
-verifyObjectNames(object_o_1, functionParameterTypeFactory_o_1 = retrieveFactory())
+verifyObjectNames(object_o_1)
 }
 \arguments{
   \item{object_o_1}{ the object to be checked }
-  \item{functionParameterTypeFactory_o_1}{ the type factory to check parameter types }
 }
 \value{
 A \code{list} with following names

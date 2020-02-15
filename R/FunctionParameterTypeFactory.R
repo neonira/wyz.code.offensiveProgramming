@@ -136,6 +136,8 @@ FunctionParameterTypeFactory <- function() {
 
   getRecordedTypes <- function() copy(dt[order(suffix)])
 
+  retrieveKnownSuffixes <- function() dt$suffix
+
   checkSuffix <- function(suffix_s_1) suffix_s_1[1] %in% dt$suffix
 
   addSuffix <- function(suffix_s_1, type_s_1, typeVerifier_f_1) {

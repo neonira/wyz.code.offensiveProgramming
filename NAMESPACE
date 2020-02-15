@@ -23,7 +23,7 @@ export(
   getObjectFunctionNames,
   identifyOPInstrumentationLevel,
   isAuditable,
-  packageFunctionsInformation,
+  opInformation,
   matchFunctionSignature,
   retrieveFactory,
   retrieveFunctionArguments,

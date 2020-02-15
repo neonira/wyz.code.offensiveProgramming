@@ -1,6 +1,5 @@
 context("retrieveTestCaseDefinitions")
 
-#Sys.setenv('OP_AUDIT' = 'y')
 source('pathResolver.R')
 sample_folder <- file.path(computeRootPath(), 'code-samples')
 
@@ -25,15 +24,14 @@ names(sample_objects) <- files
 #print(sample_objects)
 tt[[3]] <- proc.time()
 
-fptf <- FunctionParameterTypeFactory()
-name_compliance <- lapply(sample_objects, verifyObjectNames, fptf)
+name_compliance <- lapply(sample_objects, verifyObjectNames)
 
 l <- length(name_compliance[[1]])
 dcond <- rbindlist(lapply(name_compliance, function(e) e[4:(l - 1)]))
 #print(dcond)
 tt[[4]] <- proc.time()
 
-tcd <- lapply(sample_objects, retrieveTestCaseDefinitions, fptf)
+tcd <- lapply(sample_objects, retrieveTestCaseDefinitions)
 tt[[5]] <- proc.time()
 
 tcd_b <- unlist(lapply(tcd, function(e) is.data.table(e)))

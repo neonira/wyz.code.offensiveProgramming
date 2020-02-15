@@ -1,11 +1,4 @@
 verifyFunctionArguments <- function(arguments_l, abort_b_1 = TRUE, verbosity_b_1 = FALSE) {
-  # params <- mget(ls())
-  # call_signature <- as.character(sys.call())[1]
-  # s <-  strsplit(call_signature, ':', fixed = TRUE)[[1]]
-  # function_name <- s[length(s)]
-  # fa <- retrieveFunctionArguments(function_name)
-  # list(params = params, function_name = function_name, formals = fa)
-
   l <- length(arguments_l)
   if (l == 0) return(TRUE)
   factory <- retrieveFactory()

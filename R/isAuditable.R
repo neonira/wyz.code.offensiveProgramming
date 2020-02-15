@@ -1,3 +1,3 @@
 isAuditable <- function() {
-  Sys.getenv('OP_AUDIT', names = TRUE) != ''
+  isTRUE(options('op_audit')$op_audit)
 }

@@ -8,14 +8,11 @@ Retrieve test case definitions or test case descriptions.
 From an instrumented class, retrieve the test case definitions or descriptions.
 }
 \usage{
-retrieveTestCaseDefinitions(object_o_1,
-   functionParameterTypeFactory_o_1 = retrieveFactory())
-retrieveTestCaseDescriptions(object_o_1,
-   functionParameterTypeFactory_o_1 = retrieveFactory())
+retrieveTestCaseDefinitions(object_o_1)
+retrieveTestCaseDescriptions(object_o_1)
 }
 \arguments{
   \item{object_o_1}{the object to consider}
-  \item{functionParameterTypeFactory_o_1}{ the function parameter type factory to consider}
 }
 \value{
 For \code{function}, \emph{retrieveTestCaseDefinitions}, a polymorphic return that is either

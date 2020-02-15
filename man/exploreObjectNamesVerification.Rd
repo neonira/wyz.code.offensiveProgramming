@@ -7,14 +7,12 @@ Easier output and more human friendly interface to \code{\link{verifyObjectNames
 }
 \usage{
 exploreObjectNamesVerification(object_o_1,
-                               what_s_1 = c("names", "return type", "test cases", "*")[1],
-                               functionParameterTypeFactory_o_1 = retrieveFactory())
+                               what_s_1 = c("names", "return type", "test cases", "*")[1])
 }
 \arguments{
   \item{object_o_1}{ the object to be checked }
   \item{what_s_1}{ a single string that expresses what you want to focus on, should start
   by one of \code{[nrt*} character. Star means show all. }
-  \item{functionParameterTypeFactory_o_1}{ the type factory to check parameter types }
 }
 \value{
 The same value as \code{\link{verifyObjectNames}} is returned in \code{invisible} mode.

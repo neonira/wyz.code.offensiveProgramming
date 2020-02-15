@@ -1,5 +1,5 @@
-\name{packageFunctionsInformation}
-\alias{packageFunctionsInformation}
+\name{opInformation}
+\alias{opInformation}
 \title{
 Package functions information
 }
@@ -8,11 +8,11 @@ A reminder of available functions from this package, and, most common usage
 intent. A poor man CLI cheat sheet.
 }
 \usage{
-packageFunctionsInformation()
+opInformation()
 }
 \value{
 A \code{data.table} with following column names
-\item{function}{a function name provided by this package}
+\item{name}{a function name provided by this package}
 \item{elaboration}{a boolean stating if function could/should be use for elaboration purpose}
 \item{verification}{a boolean stating if function could/should be use for verification purpose}
 \item{exploitation}{a boolean stating if function could/should be use for exploitation purpose}
@@ -30,7 +30,7 @@ Refer also to package vignettes.
 }
 \examples{
 ##---- typical case ----
-packageFunctionsInformation()
+opInformation()
 }
 \keyword{ programming }
 \keyword{ utilities }

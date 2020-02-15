@@ -1,6 +1,5 @@
 exploreObjectNamesVerification <- function(object_o_1,
-                                           what_s_1 = c('names', 'return type', 'test cases', '*')[1],
-                                           functionParameterTypeFactory_o_1 = retrieveFactory()) {
+                                           what_s_1 = c('names', 'return type', 'test cases', '*')[1]) {
 
   idx <- switch(tolower(substr(what_s_1, 1, 1)),
                 'a' = 2, # arguments
@@ -11,7 +10,7 @@ exploreObjectNamesVerification <- function(object_o_1,
                 1
   )
 
-  r <- verifyObjectNames(object_o_1, functionParameterTypeFactory_o_1)
+  r <- verifyObjectNames(object_o_1)
 
   if (idx == 1 || idx == 4) {
     w <- which(r$parameter_name_compliance$semantic_naming_check == FALSE)

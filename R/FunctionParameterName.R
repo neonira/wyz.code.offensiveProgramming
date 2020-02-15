@@ -73,11 +73,11 @@ FunctionParameterName <- function(name_s_1) {
     # no fall trhu required
   }
 
-  isSemanticName <- function(functionParameterTypeFactory_o = retrieveFactory()) {
+  isSemanticName <- function() {
     if (!isValid()) return(FALSE)
     if (isEllipsis()) return(TRUE)
     if (isPolymorphic()) return(TRUE)
-    functionParameterTypeFactory_o$checkSuffix(getTypeSuffix())
+    retrieveFactory()$checkSuffix(getTypeSuffix())
   }
 
   getFullParameterName <- function() name_s_1

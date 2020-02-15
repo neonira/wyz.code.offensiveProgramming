@@ -1,6 +1,5 @@
 verifyFunctionReturnTypesDefinition <- function(object_o_1,
-                                                requiresFullInstrumentation_b_1 = TRUE,
-                                                functionParameterTypeFactory_o_1 = retrieveFactory()) {
+                                                requiresFullInstrumentation_b_1 = TRUE) {
 
   buildReturnValue <- function(validity_b, intent_s, msg_s) {
     list(validity = validity_b,
@@ -55,7 +54,7 @@ verifyFunctionReturnTypesDefinition <- function(object_o_1,
 
     rv <- unique(fn$return_value) # need to check that return_value is a known type
     cv <- sapply(rv, function(e) {
-      FunctionParameterName(e)$isSemanticName(functionParameterTypeFactory_o_1)
+      FunctionParameterName(e)$isSemanticName()
     }, simplify = FALSE)
     if (any(cv == FALSE)) {
       w <- which(cv == FALSE)

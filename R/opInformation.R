@@ -1,27 +1,4 @@
-packageFunctionsInformation <- function() {
-
-  buildList <- function(functionName_s_1, category_s_1, nature_s_1,
-                        stratum_s_1, phasing_s_1, intent_s_1) {
-    list(function_name = functionName_s_1, category = category_s_1,
-         nature = nature_s_1, stratum = stratum_s_1, phasing = phasing_s_1,
-         intent = intent_s_1
-    )
-  }
-
-  bec <- function(functionName_s_1, stratum_s_1, phasing_s_1, intent_s_1) {
-    buildList(functionName_s_1, category$CLASS, nature$EXPORTED,
-              stratum_s_1, phasing_s_1, intent_s_1)
-  }
-
-  bef <- function(functionName_s_1, stratum_s_1, phasing_s_1, intent_s_1) {
-    buildList(functionName_s_1, category$FUNCTION, nature$EXPORTED,
-              stratum_s_1, phasing_s_1, intent_s_1)
-  }
-
-  bif <- function(functionName_s_1, stratum_s_1, phasing_s_1, intent_s_1) {
-    buildList(functionName_s_1, category$FUNCTION, nature$INTERNAL,
-              stratum_s_1, phasing_s_1, intent_s_1)
-  }
+opInformation <- function() {
 
   stratum <- buildIdentityList(c('core', paste0('layer_', 1:3)))
   phasing <- buildIdentityList(c('design', 'build', 'test', 'run', 'maintain', 'evolve', 'transversal'))
@@ -29,6 +6,25 @@ packageFunctionsInformation <- function() {
                                 'content_generation', 'utilities'))
   category <- buildIdentityList(c('function', 'class', 'data'))
   nature <- buildIdentityList(c('exported', 'internal'))
+
+  buildList <- function(name_s_1, category_s_1, nature_s_1,
+                        stratum_s_1, phasing_s_1, intent_s_1) {
+    list(name = name_s_1, category = category_s_1, nature = nature_s_1,
+         stratum = stratum_s_1, phasing = phasing_s_1, intent = intent_s_1
+    )
+  }
+
+  bec <- function(name_s_1, stratum_s_1, phasing_s_1, intent_s_1) {
+    buildList(name_s_1, category$CLASS, nature$EXPORTED, stratum_s_1, phasing_s_1, intent_s_1)
+  }
+
+  bef <- function(name_s_1, stratum_s_1, phasing_s_1, intent_s_1) {
+    buildList(name_s_1, category$FUNCTION, nature$EXPORTED, stratum_s_1, phasing_s_1, intent_s_1)
+  }
+
+  bif <- function(name_s_1, stratum_s_1, phasing_s_1, intent_s_1) {
+    buildList(name_s_1, category$FUNCTION, nature$INTERNAL, stratum_s_1, phasing_s_1, intent_s_1)
+  }
 
   dt <- data.table::rbindlist(list(
     bef('defineEvaluationModes', stratum$LAYER_3, phasing$BUILD, intent$PARTS_BUILDING),
@@ -47,7 +43,7 @@ packageFunctionsInformation <- function() {
     bef('retrieveTestCaseDefinitions', stratum$LAYER_1, phasing$RUN, intent$UTILITIES),
     bef('runFunction', stratum$LAYER_1, phasing$RUN, intent$UTILITIES),
     bef('isAuditable', stratum$CORE, phasing$RUN, intent$UTILITIES),
-    bef('packageFunctionsInformation', stratum$LAYER_3, phasing$RUN, intent$FEEDBACK),
+    bef('opInformation', stratum$LAYER_3, phasing$RUN, intent$FEEDBACK),
     bef('identifyOPInstrumentationLevel', stratum$LAYER_3, phasing$RUN, intent$FEEDBACK),
     bef('exploreObjectNamesVerification', stratum$LAYER_3, phasing$RUN, intent$FEEDBACK),
     bef('findFilesInPackage', stratum$LAYER_3, phasing$RUN, intent$UTILITIES),
@@ -74,15 +70,6 @@ packageFunctionsInformation <- function() {
   )
   )
 
-  # to activate at build time to ensure completion of declarations
-  # ko <- 0
-  # sapply(list.files('R'), function(fn) {
-  #   if (!removeFilenameExtension(fn) %in% dt$function_name) {
-  #     ko <<- ko + 1
-  #     cat('missing function', strBracket(fn), '\n')
-  #   }
-  # })
-  # if (ko) abort('found', ko, 'errors')
-  function_name <- NULL # nse
-  dt[order(function_name)]
+  name <- NULL # nse
+  dt[order(name)]
 }

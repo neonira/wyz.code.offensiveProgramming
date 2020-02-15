@@ -1,6 +1,5 @@
 matchFunctionArguments <- function(realArguments_l,
-                                   signatureArguments_s,
-                                   functionParameterTypeFactory_o_1 = retrieveFactory()) {
+                                   signatureArguments_s) {
 
   verifySignature <- function(real_l, theoritical_s, message_s_1) {
 
@@ -24,10 +23,11 @@ matchFunctionArguments <- function(realArguments_l,
       )))
     }
 
+    tf <- retrieveFactory()
     rv <- sapply(seq_len(length(real_l)), function(k) {
       #catn('parameter name', anm[k], 'value', strBracket(real_l[[k]]))
       if (!is.na(anm[k]) && anm[k] != ellipsis) {
-        functionParameterTypeFactory_o_1$verifyValue(FunctionParameterName(anm[k]), real_l[[k]])
+        tf$verifyValue(FunctionParameterName(anm[k]), real_l[[k]])
       } else  {
         list(parameter_name = ellipsis,
              parameter_value = list(real_l[[k]]),

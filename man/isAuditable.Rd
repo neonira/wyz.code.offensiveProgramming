@@ -8,8 +8,8 @@ Use method \code{isAuditable} to know if code is auditable
 isAuditable()
 }
 \value{
-A boolean value. To turn value to \code{TRUE}, environment variable
-\code{OP_AUDITABLE} must be set to a value that does not match an empty string.
+A boolean value. To turn value to \code{TRUE},  set option
+\code{op_audit} to \code{TRUE}.
 }
 \author{
 \packageAuthor{wyz.code.offensiveProgramming}

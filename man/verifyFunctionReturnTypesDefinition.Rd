@@ -9,13 +9,11 @@ and helps in dectection of uncompliances.
 }
 \usage{
 verifyFunctionReturnTypesDefinition(object_o_1,
-requiresFullInstrumentation_b_1 = TRUE,
-functionParameterTypeFactory_o_1 = retrieveFactory())
+                                    requiresFullInstrumentation_b_1 = TRUE)
 }
 \arguments{
   \item{object_o_1}{The object to be considered}
   \item{requiresFullInstrumentation_b_1}{a boolean stating if full instrumentation is required}
-  \item{functionParameterTypeFactory_o_1}{ a type factory to check parameter values and types}
 }
 \details{
 When \code{requiresFullInstrumentation_b_1} is \code{TRUE}, each function must have an entry

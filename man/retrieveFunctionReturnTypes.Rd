@@ -6,14 +6,11 @@ Retrieve function return types }
 From an instrumented class, retrieve the function return types definition.
 }
 \usage{
-retrieveFunctionReturnTypes(object_o_1,
-functionParameterTypeFactory_o_1 = retrieveFactory())
+retrieveFunctionReturnTypes(object_o_1)
 }
 \arguments{
   \item{object_o_1}{the object to consider}
-  \item{functionParameterTypeFactory_o_1}{ the function parameter type factory to consider}
 }
-
 \value{
 A polymorphic return that is either
 \item{a list}{as returned by the \code{\link{verifyObjectNames}} function}

@@ -6,13 +6,11 @@ Provide short information about offensive programming instrumentation level
 }
 \usage{
 identifyOPInstrumentationLevel(object_o_1 = NULL,
-                               methodName_s_1 = NA_character_,
-                               typeFactory_o_1 = retrieveFactory())
+                               methodName_s_1 = NA_character_)
 }
 \arguments{
   \item{object_o_1}{ the object to be checked }
   \item{methodName_s_1}{ the method to consider, if any. }
-  \item{typeFactory_o_1}{ the type factory to check parameter types }
 }
 \value{
 A \code{list} with following names

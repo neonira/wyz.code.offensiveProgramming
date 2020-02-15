@@ -1,6 +1,5 @@
 verifyTestCaseDefinitions <-  function(object_o_1,
-                                       requiresFullInstrumentation_b_1 = TRUE,
-                                       functionParameterTypeFactory_o_1 = retrieveFactory()) {
+                                       requiresFullInstrumentation_b_1 = TRUE) {
 
   buildReturnValue <- function(validity_b, intent_s, msg_s) {
     list(validity = validity_b,
